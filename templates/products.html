@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table>
+    <tr>    <!-- table row -->
+        <th>Name</th>
+        <th>Price</th>
+        <th>Location</th>
+    </tr>
+
+    {% for p in product_list %}
+
+    <tr>
+        <td>{{ p.name }}</td>     <!-- tra doppie graffe è per dire che lo prende da jinja e lui le trasforma in html -->
+        <td>{{ p.price }}</td>
+        <td>{{ p.location }}</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

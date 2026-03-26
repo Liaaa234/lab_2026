@@ -2,25 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Store</title>
+    <link rel="stylesheet" href="{{url_for('static', path='styles.css')}}">
 </head>
 <body>
     <header>
-        <h1>Un sito web</h1>
-        <p>This is a simple FastAPI app.</p>
+         <h1>The store</h1>
+         <p>This is a store.</p>
     </header>
     <nav>
         <a href="/">Home</a>
-        <a href="http://wikipedia.it">Wikipedia</a>
-        <a href="#">Qualcosa</a>
+        <a href="/products">Products</a>
     </nav>
     <div class="container">
-        {% block content%}                           <!-- aprire un placeholder e "content è il nome"-->
+        {% block content%}
 
-        {% endblock %}                        <!-- chiudere un placeholder -->
+        {% endblock %}
     </div>
     <footer>
-        <p>&copy; 2026 Programmazione Web UNICA</p>
+        <p>&copy;2026 Programmazione Web UNICA</p>
     </footer>
 </body>
+
 </html>
