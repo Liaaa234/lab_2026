@@ -1,7 +1,7 @@
     {% extends "base.html" %}   <!-- eredita da base.html la struttura-->
 
     {% block content %}     <!-- sto sovrascrivendo il block all'interno di base (OVERRIDE)-->
-        <h3 style="text-align: center">{{ text.title }}</h3>        <!-- definisco una variabile con le doppie parentesi grafe-->
+        <h3 style="text-align: center">{{ text.title }}</h3>        <!-- definisco una variabile con le doppie parentesi graffe-->
         <p style="text-align: center">{{ text.content }}</p>
         <ul>
             {% for word in sequence %}
