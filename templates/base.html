@@ -11,8 +11,9 @@
          <p>This is a store.</p>
     </header>
     <nav>
-        <a href="/">Home</a>
+        <a href="/">Home</a>        <!-- a è testo cliccabile -->
         <a href="/products">Products</a>
+        <a href="{{ url_for('add_product') }}">Add Product</a>
     </nav>
     <div class="container">
         {% block content%}

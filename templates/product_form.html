@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="{{ url_for('insert_product') }}" method="post">    <!-- conterrà l'url della funzione a cui dovrò mandare i dati --- ora sarà una richiesta POST e non GET-->
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br>   <!-- id serve ad associare le cose nell'html, name servirà quando verrano inviati i dati -->
+
+    <label for="price">Price:</label><br>
+    <input type="number" min="0" name="price" id="price" required><br>
+
+    <label for="location">Location:</label><br>
+    <input type="text" id="location" name="location" required><br>
+
+    <br><br>
+    <input type="submit" value="Add">   <!-- submit metterà un bottone da schiacciare per inviare i dati -->
+    <input type="reset" value="Reset">   <!-- reset svuoterà i campi -->
+</form>
+
+{% endblock %}
