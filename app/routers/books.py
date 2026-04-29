@@ -3,6 +3,7 @@ from schemas.book import Book, books
 from typing import Annotated
 from schemas.review import Review   #importiamo la classe dall'altro file
 
+
 books_router = APIRouter(prefix="/books", tags=["books"])
 
 """
