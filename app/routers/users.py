@@ -12,3 +12,11 @@ def get_all_users(session: SessionDep) -> list[UserPublic]:
     return users
 
 @users_router.get("/{id}/books")
+def get_user_books(
+    id: int,
+    session: SessionDep
+) -> list[BookPublic]:
+    """Returns all books held by the given user."""
+    statement = select(BookDB).join(UserDB).where(UserDB.id == id)
+    result = session.exec(statement).all()
+    return result
