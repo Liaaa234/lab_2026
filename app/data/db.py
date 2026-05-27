@@ -4,10 +4,9 @@ from typing import Annotated
 from fastapi import Depends
 from schemas.book import BookDB     # noqa
 from schemas.users import UserDB
+from schemas.book_user_link import BookUserLink
 from faker import Faker     #per il riempimento con i dati fittizi
 import os
-
-from schemas.users import UserDB
 
 sqlite_file_name = "C:\\Users\\gika1\\lab_2026\\app\\data\\database.db"   #file persistente in memoria
 sqlite_url = f"sqlite:///{sqlite_file_name}"    #file endpoint dove viene montato qualcosa(?)
@@ -38,7 +37,7 @@ def init_database():
                     city=f.city()
                 )
                 session.add(user)
-            for i in range(10):
+            for i in range(5):
                 link = BookUserLink(
                     book_id=f.pyint(1, 10),
                     user_id=f.pyint(1, 10),
