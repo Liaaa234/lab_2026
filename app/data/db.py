@@ -1,9 +1,13 @@
+from click.types import convert_type
 from sqlmodel import create_engine, SQLModel, Session
 from typing import Annotated
 from fastapi import Depends
 from schemas.book import BookDB     # noqa
+from schemas.users import UserDB
 from faker import Faker     #per il riempimento con i dati fittizi
 import os
+
+from schemas.users import UserDB
 
 sqlite_file_name = "C:\\Users\\gika1\\lab_2026\\app\\data\\database.db"   #file persistente in memoria
 sqlite_url = f"sqlite:///{sqlite_file_name}"    #file endpoint dove viene montato qualcosa(?)
@@ -14,18 +18,26 @@ engine = create_engine(
 
 #inizializziamo il database
 def init_database():
-    ds_exists = os.path.isfile(sqlite_file_name)
+    ds_exists = os.path.isfile(sqlite_file_name)    #check per vedere se il file esiste già
     SQLModel.metadata.create_all(engine)
-    if not ds_exists:
+    if not ds_exists:                               #se non esiste utilizza faker per crearne uno con dati fittizzi
         f = Faker("it_IT")
         with Session(engine) as session:
             for i in range(10):     #creo 10 libri
                 book = BookDB(
                     title=f.sentence(nb_words=5),
                     author=f.name(),
-                    review=f.pyint(1, 5)
+                    review=f.pyint(1, 5),
+                    user_id=f.pyint(1, 10)
                 )
                 session.add(book)
+            for i in range(10):
+                user = UserDB(
+                    name=f.name(),
+                    birth_date=f.date_of_birth(),
+                    city=f.city()
+                )
+                session.add(user)
             session.commit()
 
 #dependecies
