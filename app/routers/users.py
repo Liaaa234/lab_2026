@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from data.db import SessionDep
 from schemas.users import UserDB, UserPublic    #importiamo i database
+from schemas.book import BookDB, BookPublic
 from sqlmodel import select
 
 users_router = APIRouter(prefix="/users")     #sottopercorso dedicato a questa risorsa
