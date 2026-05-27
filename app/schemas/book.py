@@ -30,7 +30,6 @@ class BookPublic(BookBase):   #restituita nel GET(ci dev'essere anche l'id, quin
 
 class BookDB(BookBase, table=True):   #con il parametro table=True, avremo tutto ma con il parametro table, stabilisce il ponte tra il nostro codice python e il database
     id: int = Field(default=None, primary_key=True)     #vogliamo che l'id sia la chiave primaria e che sia assegnata automaticamente dal database
-    user_id: int | None = Field(default=None, foreign_key="userdb.id")   #foreign_key deve avere il nome della tabella dalla quale prende la chiave e la colonna (id) (?)
 
 """class Book(SQLModel, table=True):
     id: int

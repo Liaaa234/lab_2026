@@ -38,6 +38,12 @@ def init_database():
                     city=f.city()
                 )
                 session.add(user)
+            for i in range(10):
+                link = BookUserLink(
+                    book_id=f.pyint(1, 10),
+                    user_id=f.pyint(1, 10),
+                )
+                session.add(link)
             session.commit()
 
 #dependecies
