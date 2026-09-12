@@ -19,7 +19,7 @@ engine = create_engine(
 def init_database():
     ds_exists = os.path.isfile(sqlite_file_name)    #check per vedere se il file esiste già
     SQLModel.metadata.create_all(engine)
-    if not ds_exists:                               #se non esiste utilizza faker per crearne uno con dati fittizzi
+    if not ds_exists:                               #se non esiste utilizza faker per crearne uno con dati fittizi
         f = Faker("it_IT")
         with Session(engine) as session:
             for i in range(10):     #creo 10 libri
